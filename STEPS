@@ -30,4 +30,7 @@ To get port and host you may use the following commands:
 helm delete --purge nodeserver 
 
 # we can also upgrade without deploying to accommodate changes in helm charts
-helm upgrade nodeserver charts/nodeserver
+helm upgrade nodeserver chart/nodeserver
+
+# --install mean upgrade if it is installed, or install in other case
+helm upgrade --install nodeserver chart/nodeserver
