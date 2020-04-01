@@ -20,7 +20,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+let pingCheck = new health.PingCheck("example.com");
 let healthcheck = new health.HealthChecker();
+healthcheck.registerLivenessCheck(pingCheck)
+
 app.use('/live', health.LivenessEndpoint(healthcheck))
 app.use('/ready', health.ReadinessEndpoint(healthcheck))
 app.use('/health', health.HealthEndpoint(healthcheck))
