@@ -10,3 +10,6 @@ docker run -i -p 3000:3000 -v "$PWD"/:/app -v "$PWD"/node_modules_linux:/app/nod
 # to run debugger
 # expose debuger address, map it, run run-deb script
 docker run -i --expose 9229 -p 9229:9229 -p 3000:3000 -v "$PWD"/:/app -v "$PWD"/node_modules_linux:/app/node_modules -t nodeserver-tools /bin/run-debug
+
+# build production read image
+docker build -t nodeserver-prod -f Dockerfile-run .
