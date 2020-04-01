@@ -6,3 +6,7 @@ docker build -t nodeserver-tools -f Dockerfile-tools .
 docker run -i -v "$PWD"/package.json:/tmp/package.json -v "$PWD"/node_modules_linux:/tmp/node_modules -w /tmp -t node:12.16.1 npm install
 
 docker run -i -p 3000:3000 -v "$PWD"/:/app -v "$PWD"/node_modules_linux:/app/node_modules -t nodeserver-tools /bin/run-dev
+
+# to run debugger
+# expose debuger address, map it, run run-deb script
+docker run -i --expose 9229 -p 9229:9229 -p 3000:3000 -v "$PWD"/:/app -v "$PWD"/node_modules_linux:/app/node_modules -t nodeserver-tools /bin/run-debug
