@@ -13,3 +13,8 @@ docker run -i --expose 9229 -p 9229:9229 -p 3000:3000 -v "$PWD"/:/app -v "$PWD"/
 
 # build production read image
 docker build -t nodeserver-prod -f Dockerfile-run .
+
+
+## HELM
+helm install nodeserver charts/nodeserver
+helm status
