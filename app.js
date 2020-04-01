@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 let pingCheck = new health.PingCheck("example.com");
 let healthcheck = new health.HealthChecker();
-healthcheck.registerLivenessCheck(pingCheck)
+healthcheck.registerReadinessCheck(pingCheck)
 
 app.use('/live', health.LivenessEndpoint(healthcheck))
 app.use('/ready', health.ReadinessEndpoint(healthcheck))
